@@ -88,13 +88,13 @@ function handleLoaded() {
 
     // Generates C random values
     var columns = [0, 1079];
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 20; i++) {
         columns.push(parseInt(Math.random() * 1080));
     }
     columns.sort((a, b) => a - b);
 
     var rows = [0, 1079];
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 20; i++) {
         rows.push(parseInt(Math.random() * 1080));
     }
     rows.sort((a, b) => a - b);
@@ -111,30 +111,31 @@ function handleLoaded() {
         }
     }
 
+    shuffleArray(rectangles);
+
     ctx.strokeStyle = "white";
-    for (var i = 0; i < rectangles.length / 10; i++) {
-        ctx.beginPath();
+    for (var i = 0; i < (rectangles.length / 5); i++) {
         var r = rectangles[i];
         var w = r.xb - r.xa;
         var h = r.yb - r.ya;
         var imData = ctx.createImageData(w, h);
         var data = imData.data;
         var p = Math.random();
-        for (var j = 0; j < data.length / 4; j++) {
+        ctx.moveTo(r.xa, r.ya);
+        for (var j = 0; j < data.length; j += 4) {
             if (Math.random() < p) {
                 data[j] = 255;
                 data[j+1] = 0;
                 data[j+2] = 0;
-                data[j+3] = 0;
+                data[j+3] = 255;
             } else {
                 data[j] = 0;
                 data[j+1] = 0;
                 data[j+2] = 0;
-                data[j+3] = 0;
+                data[j+3] = 255;
             }
         }
         ctx.putImageData(imData, r.xa, r.ya);
-        ctx.stroke();
     }
 
 
