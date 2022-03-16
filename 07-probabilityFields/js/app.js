@@ -32,6 +32,22 @@ function handleLoaded() {
     var startT = new Date();
     console.log("loaded!");
 
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    console.log(urlParams);
+
+    c = [255, 0, 0];
+
+    if (urlParams.has('r')) {
+        c[0] = parseInt(urlParams.get('r'));
+    }
+    if (urlParams.has('g')) {
+        c[1] = parseInt(urlParams.get('g'));
+    }
+    if (urlParams.has('b')) {
+        c[2] = parseInt(urlParams.get('b'));
+    }
+
     // Alright, so let's map this shit out
     // I need non-overlapping random squares
     // I need them in a list
@@ -81,7 +97,7 @@ function handleLoaded() {
 
 
     var ctx = document.getElementById("myCanvas").getContext("2d");
-    ctx.rect(0, 0, 1080, 1080);
+    ctx.rect(0, 0, 1079, 1079);
     ctx.fillStyle = "black";
     ctx.fill();
 
@@ -118,15 +134,18 @@ function handleLoaded() {
         var r = rectangles[i];
         var w = r.xb - r.xa;
         var h = r.yb - r.ya;
+        if (w == 0 || h == 0) {
+            continue;
+        }
         var imData = ctx.createImageData(w, h);
         var data = imData.data;
         var p = Math.random();
         ctx.moveTo(r.xa, r.ya);
         for (var j = 0; j < data.length; j += 4) {
             if (Math.random() < p) {
-                data[j] = 255;
-                data[j+1] = 0;
-                data[j+2] = 0;
+                data[j] = c[0];
+                data[j+1] = c[1];
+                data[j+2] = c[2];
                 data[j+3] = 255;
             } else {
                 data[j] = 0;
