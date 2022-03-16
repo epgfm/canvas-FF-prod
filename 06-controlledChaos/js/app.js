@@ -88,52 +88,34 @@ function handleLoaded() {
 
     // Generates C random values
     var columns = [0, 1079];
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 10; i++) {
         columns.push(parseInt(Math.random() * 1080));
     }
-    columns.sort((a, b) => a - b);
+    columns.sort();
 
     var rows = [0, 1079];
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 10; i++) {
         rows.push(parseInt(Math.random() * 1080));
     }
-    rows.sort((a, b) => a - b);
+    rows.sort();
 
     var rectangles = [];
-    for (var i = 0; i < rows.length - 1; i++) {
-        for (var j = 0; j < columns.length - 1; j++) {
+    for (var i = 0; i < rows.length; i++) {
+        for (var j = 0; j < columns.length; j++) {
             rectangles.push({
                 xa: columns[j],
                 ya: rows[i],
                 xb: columns[j+1],
                 yb: rows[i+1]
-            });
+            })
         }
     }
 
     ctx.strokeStyle = "white";
-    for (var i = 0; i < rectangles.length / 10; i++) {
+    for (var i = 0; i < rectangles.length; i++) {
         ctx.beginPath();
         var r = rectangles[i];
-        var w = r.xb - r.xa;
-        var h = r.yb - r.ya;
-        var imData = ctx.createImageData(w, h);
-        var data = imData.data;
-        var p = Math.random();
-        for (var j = 0; j < data.length / 4; j++) {
-            if (Math.random() < p) {
-                data[j] = 255;
-                data[j+1] = 0;
-                data[j+2] = 0;
-                data[j+3] = 0;
-            } else {
-                data[j] = 0;
-                data[j+1] = 0;
-                data[j+2] = 0;
-                data[j+3] = 0;
-            }
-        }
-        ctx.putImageData(imData, r.xa, r.ya);
+        drawLine(r.xa, r.xb, r.ya, r.yb);
         ctx.stroke();
     }
 
