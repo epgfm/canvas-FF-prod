@@ -7,3 +7,7 @@ Canvas procgen productions
 - [03-angelLight](https://epgfm.github.io/canvas-FF-prod/03-angelLight/)
 - [04-angelFig](https://epgfm.github.io/canvas-FF-prod/04-angelFig/)
 - [05-angelField](https://epgfm.github.io/canvas-FF-prod/05-angelField/)
+- [06-controlledChaos](https://epgfm.github.io/canvas-FF-prod/06-controlledChaos/)
+- [07-probabilityFields](https://epgfm.github.io/canvas-FF-prod/07-probabilityFields/)
+- [08-glitchStars](https://epgfm.github.io/canvas-FF-prod/08-glitchStars/)
+

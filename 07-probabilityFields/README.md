@@ -1,3 +1,3 @@
-# 05-angelField
+# 05-probabilityFields
 
-Something like a star field but with angels
+Randomized grid of non-overlapping squares filled with colored pixel given a per-square probability.
