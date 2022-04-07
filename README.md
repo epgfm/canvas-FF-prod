@@ -10,4 +10,5 @@ Canvas procgen productions
 - [06-controlledChaos](https://epgfm.github.io/canvas-FF-prod/06-controlledChaos/)
 - [07-probabilityFields](https://epgfm.github.io/canvas-FF-prod/07-probabilityFields/)
 - [08-glitchStars](https://epgfm.github.io/canvas-FF-prod/08-glitchStars/)
+- [09-glitchWords](https://epgfm.github.io/canvas-FF-prod/09-glitchWords/)
 
